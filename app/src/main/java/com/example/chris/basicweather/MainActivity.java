@@ -3,6 +3,8 @@ package com.example.chris.basicweather;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+//Just a comment
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
