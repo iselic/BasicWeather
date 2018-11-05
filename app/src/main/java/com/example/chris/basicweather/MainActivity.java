@@ -1,5 +1,6 @@
 package com.example.chris.basicweather;
 
+import android.content.Context;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
+
 import me.anwarshahriar.calligrapher.Calligrapher;
 
 
@@ -16,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView  temp_heading,temp_field;
     Typeface customFont;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         temp_field = findViewById(R.id.temp_field);
         temp_heading = findViewById(R.id.temp_heading);
         Button button = findViewById(R.id.button);
-        customFont = Typeface.createFromAsset(getAssets(), "fonts/Richela Kids Font by Keithzo (7NTypes).otf");
+        customFont = Typeface.createFromAsset(getAssets(), "fonts/ObelixPro-cyr.ttf");
         temp_heading.setTypeface(customFont);
 
         Calligrapher calligrapher = new Calligrapher(this);
@@ -44,12 +48,18 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_LONG).show();
 
         }
 
         protected String doInBackground(String... args) {
-            String xml = args[0];
+            String xml;
+            try {
+//                xml = Function.getData(args[0]);
+                String city = Function.getCity(getApplication(),-42.8897,147.3278);
+                xml = Function.getWeather(city);
+            } catch (IOException e){
+                xml = e.toString();
+            }
             return xml;
         }
 
