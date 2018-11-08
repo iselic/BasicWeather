@@ -39,10 +39,10 @@ public class WeatherSpace {
         JsonParser jp = new JsonParser();
         JsonElement root = jp.parse(bomData);
         JsonObject rootArr = root.getAsJsonObject();
-        String response = rootArr.get("data").getAsJsonArray().get(0).getAsJsonObject().get("value").getAsString();
-        System.out.println(response);
+        String kaus_value = rootArr.get("data").getAsJsonArray().get(0).getAsJsonObject().get("value").getAsString();
+        System.out.println(kaus_value);
 
-        return "";
+        return kaus_value;
     };
 
     public static String GetBOMData() {

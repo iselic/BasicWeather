@@ -111,11 +111,11 @@ public class MainActivity extends AppCompatActivity {
             return weather;
         }
 
-        protected void onPostExecute(WeatherObj weather) {
+        protected void onPostExecute(String weather) {
 
-//            FragmentWeather fragment = (FragmentWeather) getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.viewpager + ":" + 0);
+            FragmentSpaceWeather fragment = (FragmentSpaceWeather) getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.viewpager + ":" + 1);
 ////            Toast.makeText(getApplicationContext(), xml, Toast.LENGTH_LONG).show();
-//            fragment.today_forecast_text.setText(weather.summary);
+            fragment.kaus_text.setText(weather);
 //            fragment.max_temp_text.setText(weather.max_temp);
 //            fragment.current_temp_text.setText(weather.current_temp);
 //            fragment.app_temp_text.setText(weather.apparent_temp);
