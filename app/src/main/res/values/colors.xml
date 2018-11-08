@@ -3,4 +3,8 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="menuBar">#003459</color>
+    <color name="background">#00171F</color>
+    <color name="card_background">#007EA7</color>
+    <color name="textLight">#FFFFFF</color>
 </resources>

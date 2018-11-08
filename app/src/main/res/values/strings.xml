@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">BasicWeather</string>
-    <string name="heading_text">This is a heading</string>
+    <string name="heading_text">Todays Forecast:</string>
+    <string name="summary_heading">Summary</string>
     <string name="temperature_heading">Temperature: </string>
     <string name="test_button">Click here..</string>
 </resources>

@@ -117,10 +117,12 @@ public class Function {
     }
 
 
-    public static String getWeather(String city) throws IOException {
+    public static WeatherObj getWeather(String city) throws IOException {
         URL url;
-        String attr = "null";
+        WeatherObj weather;
         String xmlString = "null";
+        String summary = "";
+        String precipitation = "";
 
         try {
             url = new URL("ftp://ftp.bom.gov.au/anon/gen/fwo/IDT16710.xml");
@@ -151,12 +153,15 @@ public class Function {
             Node area = (Node) xpath.evaluate("//product/forecast/area[@description="+city+"]",document,XPathConstants.NODE);
             Node forecast = (Node) xpath.evaluate("forecast-period[@index=\"0\"]",area,XPathConstants.NODE);
             Node text = (Node) xpath.evaluate("text[@type=\"precis\"]",forecast,XPathConstants.NODE);
-            String key = text.getTextContent();
-            attr = key;
+            summary = text.getTextContent();
+            text = (Node) xpath.evaluate("text[@type=\"probability_of_precipitation\"]",forecast,XPathConstants.NODE);
+            precipitation = text.getTextContent();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return attr;
+
+        weather = new WeatherObj(summary,precipitation);
+        return weather;
     }
 
     public static String loadJSONFromAsset(Context context) {
